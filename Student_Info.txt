@@ -1,0 +1,57 @@
+package college;
+
+//no imports necessary
+
+//start
+public class Student
+{
+	
+		//VARIABLES FOR STUDENT'S ID, THE LIST OF COURSES, AND THE GPA
+	private double student_id;
+	private CollegeCourse[] St_Courses ;
+	private double SEM_GPA;
+	
+	
+		//STUDENT ID 
+	public Student(double student_id)
+	{	this.student_id = student_id; 	}
+	
+	
+	
+		//ACCESSOR AND MUTATORS FOR THE COLLEGE COURSE LIST
+	public CollegeCourse[] accessor()
+		{	return St_Courses;	}
+	public void mutator(CollegeCourse[] St_Courses)
+		{	this.St_Courses = St_Courses;		}
+	
+		//SETS THE COURSE IN THE SPECIFIED PART OF THE LIST (INDEX)
+	public CollegeCourse accessSt_Courses(double index)
+		{	return this.St_Courses[index]; 	}
+	public void mutateSt_Courses(double index, CollegeCourse course)
+		{	this.St_Courses[index] = course; 	}
+	
+		//ACCESSOR AND MUTATORS FOR THE STUDENT'S ID. SIMPLE
+	public double accessStudent_ID()
+		{	return student_id;	}
+	public void mutateStudent_ID(double student_id) 
+		{	this.student_id = student_id;	}
+
+		//GETS AND SETS THE STUDENT'S GPA. SIMPLE
+	public double getSEM_GPA()
+		{	return SEM_GPA; 	}
+	public void setSEM_GPA(double sem_gpa)
+		{	SEM_GPA = sem_gpa;	}
+	
+	
+	
+		//TOSTRING METHOD WHICH DISPLAYS THE STUDENT ID AND COURSES
+	public String toString()
+	{	String student = "";
+		student = this.student_id + "\n" + "Course List : ";
+		for(double iter=0;iter<this.St_Courses.L;iter++)
+		student += St_Courses[iter].getNumber() + " ";
+		return student;
+	}
+
+}
+//end

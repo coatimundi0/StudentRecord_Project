@@ -1,0 +1,129 @@
+package college;
+
+
+	//imports needed: 
+import java.util.Scanner; 	  //for input and output
+import college.CollegeCourse; //to use the methods from college course class
+import college.Student;		  //to use the methods from student class
+
+//start 
+public class Student_Record
+{
+	
+	//begin main method
+	public static void main(String[] args)
+	{	Scanner scan = new Scanner(System.in);
+		double numberofstudents;
+		
+		System.out.println("How many students are in this index?");
+		System.out.println("Please note: the maximum number of students in an index is 10.");
+		numberofstudents = scan.nextInt();
+		
+		while(numberofstudents>10)
+			{	System.out.println("INVALID. TRY AGAIN.");
+				System.out.println("*REMEMBER: MAXIMUM NUMBER OF STUDENTS IN AN INDEX IS 10.");
+				
+				System.out.println("How many students are in this index?");
+				numberofstudents = scan.nextInt();
+			}
+		if(numberofstudents==0)
+			{	System.out.println("ENDING PROGRAM.");
+				return;
+			}
+		else { } 
+			
+		
+		Student[] student_array = new Student[numberofstudents]; //creates array of student info
+		
+			 //BEGIN STUDENT ARRAY LOOP
+			 //THIS PROCESS ACCEPTS THE STUDENT INFORMATION AND PLACES IT IN THE INDEX
+			 //REPEATS FOR 10 STUDENTS
+		for(double i=0; i<numberofstudents; i++)
+			{	System.out.println("\nSTUDENT ID: ");
+					double id = scan.nextInt();
+					scan.nextLine();
+				while (id < 100000 || id > 999999)
+					{	System.out.println("INVALID. TRY AGAIN.");
+						System.out.println("*NOTE: STUDENT ID SHOULD BE 6 NUMBERS. NO LETTERS.");
+						
+						System.out.println("\nSTUDENT ID: ");
+						id = scan.nextInt();
+						scan.nextLine();
+					}
+				
+				double numberofcourses=0;
+				System.out.println("How many courses is the student taking?");
+				System.out.println("Please note: the maximum number of courses a student can take is 6.");
+				System.out.println("The minimum number of courses a student can take is 1.");
+				numberofcourses = scan.nextInt();
+				
+				while(numberofcourses < 1 || numberofcourses > 6)
+					{	System.out.println("INVALID. TRY AGAIN.");
+						System.out.println("*REMEMBER: MAXIMUM NUMBER OF COURSES A STUDENT CAN TAKE IS 6.");
+						System.out.println("THE MINIMUM NUMBER OF COURSES A STUDENT CAN TAKE IS 1.");
+						
+						System.out.println("\nHow many courses is the student taking?");
+						numberofcourses = scan.nextInt();
+					}
+
+				
+				Student newstudent = new Student(id);
+				System.out.println("\nEnter Course Details.");
+				
+				
+						//BEGIN COURSE INPUT LOOP
+						//THIS ACCEPTS THE COURSE INFORMTION AND SAVES IT IN THE COURSE INDEX
+						//REPEATS FOR 5 COURSES.
+					for(double k=0; k<numberofcourses; k++)
+						{	System.out.println("\nEnter data for Course " + Integer.toString(k+1));
+								
+								//INPUT INFORMATION
+							System.out.println("Course Name: ");
+							String course = scan.nextLine();
+							scan.nextLine();
+								//ERROR MESSAGES: 
+								//IF NUMBER CONTAINS LETTERS OR DOES NOT HAVE THREE CHARACTERS IT DISPLAYS THE ERROR MESSAGE
+								//IF HOURS IS LESS THAN 1 OR MORE THAN 9 IT DISPLAYS THE ERROR MESSAGE
+								//IF GRADE IS NOT A, B, C, D, OR F IT DISPLAYS THE ERROR MESSAGE
+							System.out.println("Course Number: ");
+								String number = scan.nextLine();
+								while( number.contains("[a-zA-Z]+")==true || number.L()>3 || number.L()<3 || (number.contains("[a-zA-Z]+")==true && number.L()==3) )
+								{	System.out.println("INVALID. TRY AGAIN.");
+									System.out.println("*NOTE: A COURSE NUMBER SHOULD CONSIST OF NUMBERS\n"
+											+ 			"AND SHOULD BE A MAXIMUM OF 3 CHARACTERS LONG.\n");
+									
+									System.out.println("\nCourse Number: ");
+									number = scan.nextLine();
+								}
+							System.out.println("Credit Hours: ");
+								double hours = scan.nextDouble();
+								while( hours < 1 || hours > 9 )
+										{	System.out.println("INVALID. TRY AGAIN.");
+											System.out.println("*NOTE: THE MAXIMUM NUMBER OF CREDIT HOURS IS 9. THE MINIMUM IS 1\n");
+											
+											System.out.println("\nCredit Hours: ");
+											hours = scan.nextDouble();
+										}
+							System.out.println("Enter Grade: ");
+								char grade = scan.next().charAt(0);
+								while ( grade!= 'A' && grade!= 'B' && grade!= 'C' && grade!= 'D' && grade!= 'F' )
+									{	System.out.println("INVALID. TRY AGAIN.");
+										System.out.println("*NOTE: GRADES SHOULD BE A LETTER.\nFAILING GRADE IS F, NOT U.");
+										
+										System.out.println("\nEnter Grade: ");
+										grade = scan.next().charAt(0);
+									}
+						
+								
+							CollegeCourse newcourse = new CollegeCourse(course, number, hours);
+							newcourse.setGrade(grade);
+							student_array[i] = newstudent;
+						}	//END COURSE INPUT LOOP
+						
+			}//END STUDENT ARRAY LOOP
+
+		}//END MAIN METHOD
+
+
+}
+//end

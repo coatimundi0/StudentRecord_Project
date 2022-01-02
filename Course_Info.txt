@@ -1,0 +1,66 @@
+package college;
+
+//no imports necessary
+
+//start
+public class CollegeCourse 
+{
+	
+		//VARIABLES FOR COURSE GRADE, COURSE NAME, CREDIT HOURS, AND COURSE NUMBER
+	private char grade;
+	private String course;
+	private double hours;
+	private String number;
+
+	
+	
+		//CONSTRUCTOR THAT ENCOMPASES THE COURSE
+		//COURSE NAME, COURSE NUMBER, CREDIT HOURS.
+		//NO GRADE BECAUSE THAT VARIES FROM PERSON TO PERSON.
+	public CollegeCourse(String course, String number, double hours)
+	{	this.course = course;
+		this.number = number;
+		this.hours = hours;
+	}
+	
+	
+	
+		//THIS GETS & SETS THE COURSE'S NAME. SIMPLE
+	public String getCourse()
+		{	return course;	}
+	public void setCourse(String course)
+		{	this.course = course;	}
+	
+		//GETS & SETS THE COURSES NUMBER. SIMPLE
+	public String getNumber()
+		{	return number;	}
+	public void setNumber(String number)
+		{	this.number = number;	  }
+
+		//GETS & SETS THE CREDIT HOURS. SIMPLE
+	public double getHours()
+		{	return hours;	}
+	public void sethours(double hours)
+		{	this.hours = hours;	}
+	
+		//GETS AND SETS THE COURSE GRADE. SIMPLE
+	public char getGrade()
+		{	return grade;	}
+	public void setGrade(char grade)
+		{	this.grade = grade;	  }
+	
+	
+	
+		//COMPARES THE NUMBER & HOURS OF EACH COURSE.
+		//IF BOTH ARE EQUAL TO EACH OTHER,
+		//THEN THE COURSES ARE EQUAL.
+	public boolean equals(CollegeCourse course1, CollegeCourse course2)
+		{	boolean equal = false;
+			if ( course1.getNumber().equals(course2.getNumber()) )
+			if ( course1.getHours() == course2.getHours()		 )
+			equal = true;
+			return equal;
+		}
+
+}
+//end
